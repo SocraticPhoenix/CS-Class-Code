@@ -1,4 +1,4 @@
-package quin;
+package quinnipiac;
 
 import java.util.HashSet;
 import java.util.Scanner;

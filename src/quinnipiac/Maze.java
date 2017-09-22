@@ -1,4 +1,4 @@
-package quin;
+package quinnipiac;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -49,28 +49,32 @@ public class Maze {
 
     }
 
+    private static int[][] offsets = new int[][] {
+            {1, 0},
+            {-1, 0},
+            {0, 1},
+            {0, -1}
+    };
+
     public static List<Move> solve(int[][] maze) {
         Stack<Move> moves = new Stack<>();
         moves.push(new Move(new Point(0, 0), new Point(0, 0)));
         while (!moves.peek().isFinal(maze)) {
             Move working = moves.peek();
             int size = moves.size();
-            search:
-            for (int r = -1; r <= 1; r++) {
-                for (int c = -1; c <= 1; c++) {
-                    if ((r == 0 || c == 0) && r != c) {
-                        Move prospective = new Move(working.getTo(), new Point(working.getTo().x + c, working.getTo().y + r));
-                        if (prospective.isPossible(maze) && moves.stream().noneMatch(m -> m.from.equals(prospective.to))) {
-                            if (prospective.isValid(maze)) {
-                                moves.push(prospective);
-                                break search;
-                            } else {
-                                maze[prospective.getTo().y][prospective.getTo().x] = -1;
-                                while (!moves.isEmpty() && !moves.peek().isValid(maze)) {
-                                    Move prev = moves.pop();
-                                    maze[prev.getTo().y][prev.getTo().x] = -1;
-                                }
-                            }
+            for (int[] offset : offsets) {
+                int r = offset[0];
+                int c = offset[1];
+                Move prospective = new Move(working.getTo(), new Point(working.getTo().x + c, working.getTo().y + r));
+                if (prospective.isPossible(maze) && moves.stream().noneMatch(m -> m.from.equals(prospective.to))) {
+                    if (prospective.isValid(maze)) {
+                        moves.push(prospective);
+                        break;
+                    } else {
+                        maze[prospective.getTo().y][prospective.getTo().x] = -1;
+                        while (!moves.isEmpty() && !moves.peek().isValid(maze)) {
+                            Move prev = moves.pop();
+                            maze[prev.getTo().y][prev.getTo().x] = -1;
                         }
                     }
                 }
