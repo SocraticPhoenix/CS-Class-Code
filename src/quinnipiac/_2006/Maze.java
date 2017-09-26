@@ -1,4 +1,4 @@
-package quinnipiac;
+package quinnipiac._2006;
 
 import java.awt.Point;
 import java.util.ArrayList;

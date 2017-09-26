@@ -1,4 +1,4 @@
-package quinnipiac;
+package quinnipiac._2006;
 
 import java.util.HashSet;
 import java.util.Scanner;
