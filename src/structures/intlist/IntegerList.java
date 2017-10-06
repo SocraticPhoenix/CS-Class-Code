@@ -1,20 +1,59 @@
-package structures;
+package structures.intlist;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.function.IntConsumer;
+import java.util.stream.IntStream;
 
-public class IntegerList {
+public class IntegerList implements Iterable<Integer> {
     private int[] backing;
 
     public IntegerList(int size) {
         this.backing = new int[size];
     }
 
+    public void forEach(IntConsumer consumer) {
+        for (int i = 0; i < this.backing.length; i++) {
+            consumer.accept(this.backing[i]);
+        }
+    }
+
+    public IntStream stream() {
+        return IntStream.of(this.backing);
+    }
+
+    public int size() {
+        return this.backing.length;
+    }
+
+    public int get(int index) {
+        return this.backing[index];
+    }
+
+    public void set(int index, int val) {
+        this.backing[index] = val;
+    }
+
+    public void remove(int index) {
+        int[] next = new int[this.backing.length - 1];
+        System.arraycopy(this.backing, 0, next, 0, index);
+        System.arraycopy(this.backing, index + 1, next, index + 1 - 1, next.length + 1 - (index + 1));
+        this.backing = next;
+    }
+
+    public void add(int index, int val) {
+        if (index == this.backing.length) add(val);
+        int[] next = new int[this.backing.length + 1];
+        System.arraycopy(this.backing, 0, next, 0, index);
+        next[index] = val;
+        System.arraycopy(this.backing, index + 1 - 1, next, index + 1, next.length - (index + 1));
+        this.backing = next;
+    }
+
     public void add(int val) {
         int[] next = new int[this.backing.length + 1];
-        for (int i = 0; i < this.backing.length; i++) {
-            next[i] = this.backing[i];
-        }
+        System.arraycopy(this.backing, 0, next, 0, this.backing.length);
         next[next.length - 1] = val;
         this.backing = next;
     }
@@ -78,6 +117,23 @@ public class IntegerList {
 
     public int[] getBacking() {
         return this.backing;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < backing.length;
+            }
+
+            @Override
+            public Integer next() {
+                return backing[index++];
+            }
+        };
     }
 
 }

@@ -1,4 +1,4 @@
-package structures;
+package structures.intlist;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -11,9 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
-import java.awt.Dimension;
 import java.awt.Insets;
-import java.awt.event.WindowAdapter;
 import java.util.stream.IntStream;
 
 public class IntegerListTest {
