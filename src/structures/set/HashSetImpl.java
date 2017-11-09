@@ -90,12 +90,14 @@ public class HashSetImpl<T> implements Set<T> {
                 if (current.hasNext()) {
                     return current.next();
                 } else {
-                    for (int i = this.index + 1; i < array.length; i++) {
+                    int i;
+                    for (i = this.index + 1; i < array.length; i++) {
                         if(!array[i].isEmpty()) {
                             current = array[i].iterator();
                             break;
                         }
                     }
+                    this.index = i;
 
                     return current.next();
                 }

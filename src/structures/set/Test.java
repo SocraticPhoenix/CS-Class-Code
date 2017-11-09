@@ -1,9 +1,11 @@
 package structures.set;
 
+import java.util.Set;
+
 public class Test {
 
     public static void main(String[] args) {
-        SetImpl<Integer> obj = new SetImpl<Integer>(10){{
+        Set<Integer> obj = new HashSetImpl<Integer>(10){{
             add(5);
             add(10);
             add(5);
