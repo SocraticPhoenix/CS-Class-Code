@@ -13,6 +13,11 @@ public class SetImpl<T> implements Set<T> {
 
     public SetImpl(int size) {
         this.array = (T[]) new Object[size];
+        this.size = 0;
+    }
+
+    public SetImpl() {
+        this(20);
     }
 
     private void tryExpand() {
