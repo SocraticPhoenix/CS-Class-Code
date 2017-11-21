@@ -95,11 +95,11 @@ public class SetImpl<T> implements Set<T> {
     @Override
     public boolean containsAll(Collection<?> c) {
         for (Object o : c) {
-            if (this.contains(o)) {
-                return true;
+            if (!this.contains(o)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override
