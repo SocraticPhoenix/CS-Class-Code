@@ -32,7 +32,6 @@ public class IntegerSetImpl implements IntegerSet {
             size++;
             return true;
         }
-
         return false;
     }
 
