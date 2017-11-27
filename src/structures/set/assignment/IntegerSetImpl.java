@@ -39,7 +39,15 @@ public class IntegerSetImpl implements IntegerSet {
     public boolean addAll(int... a) {
         boolean result = false;
         for (int i = 0; i < a.length; i++) {
-            result = add(i) || result;
+            result = add(a[i]) || result;
+        }
+        return result;
+    }
+
+    public boolean addAll(IntegerSet set) {
+        boolean result = false;
+        for (int a : set) {
+            result = add(a) || result;
         }
         return result;
     }
@@ -73,7 +81,15 @@ public class IntegerSetImpl implements IntegerSet {
     public boolean removeAll(int... a) {
         boolean result = false;
         for (int i = 0; i < a.length; i++) {
-            result = remove(i) || result;
+            result = remove(a[i]) || result;
+        }
+        return result;
+    }
+
+    public boolean removeAll(IntegerSet set) {
+        boolean result = false;
+        for (int a : set) {
+            result = remove(a) || result;
         }
         return result;
     }
@@ -90,6 +106,15 @@ public class IntegerSetImpl implements IntegerSet {
     public boolean containsAll(int... a) {
         for (int i = 0; i < a.length; i++) {
             if (!contains(a[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean containsAll(IntegerSet set) {
+        for (int a : set) {
+            if (!contains(a)) {
                 return false;
             }
         }
