@@ -129,8 +129,8 @@ public class IntegerSetImpl implements IntegerSet {
     }
 
     public int[] toArray() {
-        int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
             result[i] = array[i];
         }
         return result;
