@@ -1,11 +1,7 @@
 package structures.set;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class SetImpl<T> implements Set<T> {
     private T[] array;
@@ -27,6 +23,17 @@ public class SetImpl<T> implements Set<T> {
             System.arraycopy(array, 0, narr, 0, array.length);
             this.array = narr;
         }
+    }
+
+    public T removeRandom() {
+        int i = new Random().nextInt(this.size);
+        T t = array[i];
+        T[] narr = (T[]) new Object[this.size - 1];
+        this.size--;
+        System.arraycopy(this.array, 0, narr, 0, i);
+        System.arraycopy(this.array, i + 1, narr, i, this.size - i);
+        this.array = narr;
+        return t;
     }
 
     @Override
