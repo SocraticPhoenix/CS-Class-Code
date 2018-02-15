@@ -1,16 +1,15 @@
-import structures.linkedlist.LinkedList;
+import java.util.Scanner;
 
 public class Test {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList() {{
-            add(5);
-            add(53);
-            add(4312);
-            add(4312, 0);
-        }};
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println(linkedList);
+        int a = scan.nextInt();
+        String b = scan.next();
+        String c = scan.nextLine();
+
+        System.out.println(a + b + c);
     }
 
 }
