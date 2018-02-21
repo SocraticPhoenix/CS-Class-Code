@@ -1,0 +1,5 @@
+John-Ryan: (Grades: [53, 92, 76]), (Average: 73)
+Issac: (Grades: [80, 81, 82]), (Average: 81)
+Bryan: (Grades: [95, 92, 97]), (Average: 94)
+Sammy: (Grades: [23, 45, 60]), (Average: 42)
+David: (Grades: [75, 60, 34]), (Average: 56)
