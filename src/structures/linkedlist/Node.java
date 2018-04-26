@@ -9,6 +9,11 @@ public class Node {
         this.next = null;
     }
 
+    public Node(Object val, Node next) {
+        this.val = val;
+        this.next = next;
+    }
+
     public Node getNext() {
         return next;
     }
