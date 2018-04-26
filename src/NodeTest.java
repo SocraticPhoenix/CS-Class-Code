@@ -36,6 +36,19 @@ public class NodeTest {
             System.out.println(curr.getVal());
             curr = curr.getNext();
         }
+
+        //step 6
+        Node head;
+
+        head = new Node('c', null);
+        head = new Node('b', head);
+        head = new Node('a', head);
+
+        curr = head;
+        while (curr != null) {
+            System.out.println(curr.getVal());
+            curr = curr.getNext();
+        }
     }
 
 }
